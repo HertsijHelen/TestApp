@@ -3,12 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <title>Test Application</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script type="text/javascript" src="/Scripts/library/angular.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+
     <script type="text/javascript" src="/Scripts/app.js"></script>
     <script type="text/javascript" src="/Scripts/factory.js"></script>
     <script type="text/javascript" src="/Scripts/controller.js"></script>
     <script type="text/javascript" src="/Scripts/filter.js"></script>
+
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="padding-left:3%">
 
@@ -67,7 +74,7 @@
 
         <form name="formAdd" novalidate ng-show="add">
 
-            <h3>Add new Item</h3>
+            <h3>Add new Employee</h3>
             <p>
                 Name:<br>
                 <textarea maxlength="50" name="name" data-ng-model="Items.Name" required="" style="width:30%;height:2%;resize:none;"></textarea>
@@ -93,6 +100,15 @@
                 <span ng-show="formAdd.age.$touched && formAdd.age.$invalid">
                     <span style="color:red" ng-show="formAdd.age.$error.required">Age is required.</span>
                 </span>
+            </p>
+
+            <p>StartDate:</p>
+            <p class="input-group" style="width:40%;height:2%">
+                <input type="text" name="startDate" class="form-control" uib-datepicker-popup data-ng-model="Items.StartDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open2()" readonly />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                <span class="error" ng-show="formAdd.startDate.$invalid">*Required</span>
             </p>
 
             <button type="submit" class="btn btn-primary" ng-disabled="formAdd.$invalid" ng-click="submit()">Save</button>

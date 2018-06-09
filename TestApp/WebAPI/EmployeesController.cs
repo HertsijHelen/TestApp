@@ -18,6 +18,7 @@ namespace TestApp.WebAPI
         private DataContext db = new DataContext();
 
         // GET: api/Employees
+        [HttpGet]
         public IQueryable<Employee> GetEmployees()
         {
             return db.Employees;
@@ -70,21 +71,44 @@ namespace TestApp.WebAPI
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/Employees
+        [HttpPost]
         [ResponseType(typeof(Employee))]
-        public async Task<IHttpActionResult> PostEmployee(Employee employee)
+        public Employee PostItem(Employee item)
         {
-            if (!ModelState.IsValid)
+
+            Employee em = new Employee();
+
+            em.Name = item.Name;
+            em.Position = item.Position;
+            em.Age = item.Age;
+            em.StartDate = item.StartDate;
+            try
             {
-                return BadRequest(ModelState);
+                db.Employees.Add(em);
+                db.SaveChanges();
+                return em;
+            }
+            catch
+            {
+                return null;
             }
 
-            db.Employees.Add(employee);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = employee.Id }, employee);
         }
+
+        //// POST: api/Employees
+        //[ResponseType(typeof(Employee))]
+        //public async Task<IHttpActionResult> PostEmployee(Employee employee)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    db.Employees.Add(employee);
+        //    await db.SaveChangesAsync();
+
+        //    return CreatedAtRoute("DefaultApi", new { id = employee.Id }, employee);
+        //}
 
         // DELETE: api/Employees/5
         [ResponseType(typeof(Employee))]

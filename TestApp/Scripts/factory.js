@@ -13,7 +13,7 @@
             return $http.get('/api/Employees/');
         };
         fac.AddNewRecords = function (item) {
-            return $http.post('/api/Employees/', item);
+            return $http.post('/api/Employees/',item);
         };
         fac.DeleteRecords = function(id) {
             return $http.delete('/api/Employees/'+id);

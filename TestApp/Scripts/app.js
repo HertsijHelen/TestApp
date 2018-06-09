@@ -1,4 +1,4 @@
 ﻿(function () {
     'use strict';
-    angular.module('testapp', []);
+    angular.module('testapp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 })();
