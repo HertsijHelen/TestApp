@@ -38,39 +38,61 @@ namespace TestApp.WebAPI
         }
 
         // PUT: api/Employees/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutEmployee(int id, Employee employee)
+        [HttpPut]
+        [ResponseType(typeof(Employee))]
+        public IEnumerable<Employee> PutItem(int id, Employee item)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != employee.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(employee).State = EntityState.Modified;
-
+            Employee e = db.Employees.Find(id);
             try
             {
-                await db.SaveChangesAsync();
+                e.Name = item.Name;
+                e.Position = item.Position;
+                e.Age = item.Age;
+                e.StartDate = item.StartDate;
+                db.SaveChanges();
+                return db.Employees;
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
-                if (!EmployeeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return null;
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+
         }
+
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> PutEmployee(int id, Employee employee)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    if (id != employee.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    db.Entry(employee).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!EmployeeExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
         [HttpPost]
         [ResponseType(typeof(Employee))]
         public Employee PostItem(Employee item)

@@ -117,38 +117,41 @@
         </form>
 
         <form name="formUpdate" novalidate ng-show="upd">
-            <h3>Update Item</h3>
+            <h3>Update Employee</h3>
             <p>
                 Name:<br>
-                <textarea maxlength="30" name="name" data-ng-model="ItemEdit.Name" required="" style="width:30%;height:2%;resize:none;"></textarea>
-                <span>*Not more than 30 character</span>
+                <textarea maxlength="50" name="name" data-ng-model="ItemEdit.Name" required="" style="width:30%;height:2%;resize:none;"></textarea>
+                <span>*Not more than 50 characters</span>
                 <span ng-show="formUpdate.name.$touched && formUpdate.name.$invalid">
-            <p style="color:red;" ng-show="formUpdate.name.$error.required">Name is required.</p>
-            </span>
+                    <span style="color:red;" ng-show="formUpdate.name.$error.required">Name is required.</span>
+                </span>
             </p>
 
             <p>
                 Position:<br>
-                <textarea maxlength="50" name="description" data-ng-model="ItemEdit.Description" required="" style="width:60%;height:20%;resize:none;"></textarea>
+                <textarea maxlength="50" name="position" data-ng-model="ItemEdit.Position" required="" style="width:30%;height:2%;resize:none;"></textarea>
                 <span>*Not more than 50 character</span>
-                <span ng-show="formUpdate.description.$touched && formUpdate.description.$invalid">
-            <p style="color:red" ng-show="formUpdate.description.$error.required">Description is required.</p>
-            </span>
-            </p>
+                <span ng-show="formUpdate.position.$touched && formUpdate.position.$invalid">
+                    <span style="color:red" ng-show="formUpdate.position.$error.required">Position is required.</span>
+                </span>
 
-            <p>
-                Age:<br>
-                <select name="count" data-ng-model="ItemEdit.Count" required="">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                </select>
             </p>
+            Age:<br>
+            <textarea maxlength="2" name="age" data-ng-model="ItemEdit.Age" required="" style="width:30%;height:2%;resize:none;"></textarea>
+            <span>*Not more than 2 character</span>
+            <span ng-show="formUpdate.age.$touched && formUpdate.age.$invalid">
+                <span style="color:red" ng-show="formUpdate.age.$error.required">Age is required.</span>
+            </span>
+
+            <p>StartDate:</p>
+            <p class="input-group" style="width:40%;height:2%">
+                <input type="text" name="startDate" class="form-control" uib-datepicker-popup data-ng-model="ItemEdit.StartDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-click="open2()"/>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                <span class="error" ng-show="formAdd.startDate.$invalid">*Required</span>
+            </p>
+            
             <button type="submit" class="btn btn-primary" ng-disabled="formUpdate.$invalid" ng-click="update()">Update</button>
             <button data-ng-click="close()">Close</button>
         </form>
