@@ -111,20 +111,38 @@ namespace TestApp.WebAPI
         //}
 
         // DELETE: api/Employees/5
+        [HttpDelete]
         [ResponseType(typeof(Employee))]
-        public async Task<IHttpActionResult> DeleteEmployee(int id)
+        public IEnumerable<Employee> DeleteItem(int id)
         {
-            Employee employee = await db.Employees.FindAsync(id);
-            if (employee == null)
+            Employee emp = db.Employees.Find(id);
+            try
             {
-                return NotFound();
+                db.Employees.Remove(emp);
+                db.SaveChanges();
+                return db.Employees;
+            }
+            catch
+            {
+                return null;
             }
 
-            db.Employees.Remove(employee);
-            await db.SaveChangesAsync();
-
-            return Ok(employee);
         }
+
+        //[ResponseType(typeof(Employee))]
+        //public async Task<IHttpActionResult> DeleteEmployee(int id)
+        //{
+        //    Employee employee = await db.Employees.FindAsync(id);
+        //    if (employee == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    db.Employees.Remove(employee);
+        //    await db.SaveChangesAsync();
+
+        //    return Ok(employee);
+        //}
 
         protected override void Dispose(bool disposing)
         {
