@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Web.Http;
+using Ninject;
+using Ninject.Modules;
+using Ninject.Web.WebApi;
+using TestApp.Util;
 
 
 namespace TestApp
@@ -10,6 +14,9 @@ namespace TestApp
         protected void Application_Start(object sender, EventArgs e)
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            //NinjectModule registration = new NinjectRegistration();
+            //var kernel = new StandardKernel(registration);
+            //GlobalConfiguration.Configuration.DependencyResolver=new NinjectDependencyResolver(kernel);
         }
 
         //protected void Session_Start(object sender, EventArgs e)
