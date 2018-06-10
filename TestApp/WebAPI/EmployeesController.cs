@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="EmployeesRepository.cs" company="Tecwi">
+// <copyright file="EmployeesController.cs" company="Tecwi">
 // Copyright (c) Tecwi. All rights reserved.
 // </copyright>
 // <author>Elena Gertsiy</author>
@@ -21,17 +21,16 @@ namespace TestApp.WebAPI
             IKernel k = new StandardKernel();
             k.Bind<IRepository<Employee>>().To<EmployeesRepository>();
             repo = k.Get<IRepository<Employee>>();
-
         }
 
-        // GET: api/Employees
+        //// GET: api/Employees
         [HttpGet]
         public IHttpActionResult GetEmployees()
         {
             IEnumerable<Employee> listEmployee = repo.GetAll();
             return Ok(listEmployee);
         }
-        //Post: api/Employees
+        ////Post: api/Employees
         [HttpPost]
         [ResponseType(typeof(Employee))]
         public Employee PostItem(Employee item)
@@ -39,13 +38,14 @@ namespace TestApp.WebAPI
             return repo.Create(item);
         }
 
-        // PUT: api/Employees/5
+        //// PUT: api/Employees/5
         [HttpPut]
         [ResponseType(typeof(Employee))]
         public IEnumerable<Employee> PutItem(int id, Employee item)
         {
             bool onUpdate = repo.Update(id, item);
-            if(onUpdate==true)
+
+            if(onUpdate)
             {
                 return repo.GetAll();
             }
@@ -55,13 +55,14 @@ namespace TestApp.WebAPI
             }
         }
  
-        // DELETE: api/Employees/5
+        //// DELETE: api/Employees/5
         [HttpDelete]
         [ResponseType(typeof(Employee))]
         public IEnumerable<Employee> DeleteItem(int id)
         {
             bool onDelete = repo.Delete(id);
-            if (onDelete == true)
+
+            if (onDelete)
             {
                 return repo.GetAll();
             }

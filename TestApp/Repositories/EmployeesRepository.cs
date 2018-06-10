@@ -11,9 +11,9 @@ namespace TestApp.Repositories
     using System.Linq;
     using TestApp.Entities;
 
-    public class EmployeesRepository:IRepository<Employee>
+    public class EmployeesRepository: IRepository<Employee>
     {
-        private DataContext db=new DataContext();
+        private DataContext db = new DataContext();
        
         public IEnumerable<Employee> GetAll()
         {

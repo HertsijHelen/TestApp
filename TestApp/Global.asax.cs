@@ -14,10 +14,10 @@ namespace TestApp
         protected void Application_Start(object sender, EventArgs e)
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            //----register ninject 
-            //NinjectModule registration = new NinjectRegistration();
-            //var kernel = new StandardKernel(registration);
-            //GlobalConfiguration.Configuration.DependencyResolver=new NinjectDependencyResolver(kernel);
+            ////----register ninject 
+            ////NinjectModule registration = new NinjectRegistration();
+            ////var kernel = new StandardKernel(registration);
+            ////GlobalConfiguration.Configuration.DependencyResolver=new NinjectDependencyResolver(kernel);
         }
 
        
