@@ -4,7 +4,8 @@
     angular
         .module('testapp')
         .controller('testController', controller);
-    function controller($scope, $http, testService) {
+    function controller($scope, $http, testService)
+    {
         $scope.itemsData = null;
         $scope.add = false;
         $scope.upd = false;
@@ -13,7 +14,8 @@
             console.log("success");
             $scope.itemsData = response.data;
             $scope.clear();
-        }, function () {
+        }, function ()
+            {
             console.log('Failed Connection'); // Failed
         });
         $scope.Items = {
@@ -73,6 +75,7 @@
         $scope.showAdd = function () {
             $scope.add = true;
         }
+
         //Add Item
         $scope.submit = function () {
         console.log("submit");          
@@ -81,7 +84,7 @@
                  if (response.data != null) {
                      $scope.itemsData.push(response.data);
                      $scope.$apply();
-                     $scope.cancel(); 
+                     $scope.clear(); 
                  }           
                }, function errorCallback(response) {
                console.log("Error : " + response.data.ExceptionMessage);
@@ -94,21 +97,24 @@
             $scope.upd = true;
         };
         //Update item       
-        $scope.update = function () {
+        $scope.update = function ()
+        {
             console.log("update");
             var itemId = $scope.ItemEdit.Id;
             var id = parseInt(itemId);
           
           testService.UpdateRecords(id,$scope.ItemEdit)
-          .then(function successCallback(response) {
-              if (response.data != null) {
+              .then(function successCallback(response)
+              {
+              if (response.data != null)
+              {
                   $scope.itemsData = response.data;
                   $scope.$apply();
                   $scope.clear();
-              }
-                   
+              }                  
                 },
-                function errorCallback(response) {
+              function errorCallback(response)
+              {
                     alert("Error : " + response.data.ExceptionMessage);
                 });
         };
@@ -248,11 +254,8 @@
                     }
                 }
             }
-
             return '';
         }
-
-    }
-   
+    }  
 })();
 
