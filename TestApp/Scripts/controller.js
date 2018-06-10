@@ -49,7 +49,7 @@
             var id = parseInt(item.Id);
             testService.DeleteRecords(id)
                 .then(function successCallback(response) {
-                    if (response.data != null) {
+                    if (response.data!== null) {
                         console.log(response.data);
                         $scope.itemsData = response.data;
                         $scope.$apply();
@@ -67,28 +67,33 @@
         };
 
         //close update form
-        $scope.close = function () {
+        $scope.close = function ()
+        {
             $scope.upd = false;
         }
 
         //show AddForm
-        $scope.showAdd = function () {
+        $scope.showAdd = function ()
+        {
             $scope.add = true;
         }
 
         //Add Item
-        $scope.submit = function () {
+        $scope.submit = function ()
+        {
         console.log("submit");          
          testService.AddNewRecords($scope.Items)
              .then(function successCallback(response) {
-                 if (response.data != null) {
+                 if (response.data!== null) {
                      $scope.itemsData.push(response.data);
                      $scope.$apply();
                      $scope.clear(); 
                  }           
-               }, function errorCallback(response) {
+             },
+             function errorCallback(response)
+             {
                console.log("Error : " + response.data.ExceptionMessage);
-            });
+             });
         }
        
         //edit
@@ -106,7 +111,7 @@
           testService.UpdateRecords(id,$scope.ItemEdit)
               .then(function successCallback(response)
               {
-              if (response.data != null)
+              if (response.data!== null)
               {
                   $scope.itemsData = response.data;
                   $scope.$apply();

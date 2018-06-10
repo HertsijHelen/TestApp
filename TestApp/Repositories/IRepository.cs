@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="IRepository.cs" company="Tecwi">
+// Copyright (c) Tecwi. All rights reserved.
+// </copyright>
+// <author>Elena Gertsiy</author>
+//---
 namespace TestApp.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+
     public interface IRepository<T>:IDisposable
         where T : class
     {

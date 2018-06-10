@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
-using System.Web.Http.Description;
-using TestApp.Entities;
-using TestApp.Repositories;
-using Ninject;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="EmployeesRepository.cs" company="Tecwi">
+// Copyright (c) Tecwi. All rights reserved.
+// </copyright>
+// <author>Elena Gertsiy</author>
+//-------------------------------------------------------------------------
 namespace TestApp.WebAPI
 {
+    using System.Collections.Generic;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using TestApp.Entities;
+    using TestApp.Repositories;
+    using Ninject;
+
     public class EmployeesController : ApiController
     {
         IRepository<Employee> repo;

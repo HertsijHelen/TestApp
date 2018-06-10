@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-using System.Web.Http.Description;
-using System.Threading.Tasks;
-using TestApp.Entities;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="EmployeesRepository.cs" company="Tecwi">
+// Copyright (c) Tecwi. All rights reserved.
+// </copyright>
+// <author>Elena Gertsiy</author>
+//-------------------------------------------------------------------------
 namespace TestApp.Repositories
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using TestApp.Entities;
+
     public class EmployeesRepository:IRepository<Employee>
     {
         private DataContext db=new DataContext();

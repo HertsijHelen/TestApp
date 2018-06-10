@@ -1,13 +1,19 @@
-﻿using System.Web.Http;
-using System.Net.Http.Headers;
+﻿//-----------------------------------------------------------------------
+// <copyright file="WebApiConfig.cs" company="Tecwi">
+//     Copyright (c) Tecwi. All rights reserved.
+// </copyright>
+// <author>Elena Gertsiy</author>
+//-----------------------------------------------------------------------
 
 namespace TestApp
 {
+    using System.Web.Http;
+    using System.Net.Http.Headers;
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
-            // Маршруты веб-API
+            // API Routes
             config.MapHttpAttributeRoutes();
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
