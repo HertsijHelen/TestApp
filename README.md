@@ -7,9 +7,7 @@ You need to install MSSQL2014,SSMS,VS2017Community.
 # Getting Started
 Download the solution, find Web.config file  and change the connection string using your sql server name:
 
-<connectionStrings>
     <add name="DefaultConnection" connectionString="Data Source=Your Server Name;Initial Catalog=Company;Integrated Security=True;" providerName="System.Data.SqlClient" />
-</connectionStrings>
 
 Start SQL Server Management Studio and create Company.dbo
 
