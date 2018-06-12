@@ -13,8 +13,11 @@ namespace TestApp.Repositories
         where T : class
     {
         IEnumerable<T> GetAll();
+
         T Create(T item); 
-        bool Update(int id,T item); 
+
+        bool Update(int id,T item);
+        
         bool Delete(int id); 
     }
 }
