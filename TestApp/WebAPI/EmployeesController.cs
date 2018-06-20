@@ -18,19 +18,20 @@ namespace TestApp.WebAPI
         IRepository<Employee> repo;
         public EmployeesController()
         {
+            //rep = repo;
             IKernel k = new StandardKernel();
             k.Bind<IRepository<Employee>>().To<EmployeesRepository>();
             repo = k.Get<IRepository<Employee>>();
         }
 
-        //// GET: api/Employees
+        ///GET: api/Employees
         [HttpGet]
         public IHttpActionResult GetEmployees()
         {
             IEnumerable<Employee> listEmployee = repo.GetAll();
             return Ok(listEmployee);
         }
-        ////Post: api/Employees
+        ///Post: api/Employees
         [HttpPost]
         [ResponseType(typeof(Employee))]
         public Employee PostItem(Employee item)

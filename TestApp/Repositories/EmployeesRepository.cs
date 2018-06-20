@@ -17,22 +17,16 @@ namespace TestApp.Repositories
        
         public IEnumerable<Employee> GetAll()
         {
-            return db.Employees.ToList();
+            return db.Employees;
         }
        
         public Employee Create(Employee item)
         {
-            Employee em = new Employee();
-
-            em.Name = item.Name;
-            em.Position = item.Position;
-            em.Age = item.Age;
-            em.StartDate = item.StartDate;
             try
             {
-                db.Employees.Add(em);
+                db.Employees.Add(item);
                 db.SaveChanges();
-                return em;
+                return item;
             }
             catch
             {
@@ -73,7 +67,7 @@ namespace TestApp.Repositories
       
         private bool disposed = false;
 
-        public virtual void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {

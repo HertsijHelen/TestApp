@@ -9,7 +9,7 @@ namespace TestApp.Repositories
     using System;
     using System.Collections.Generic;
 
-    public interface IRepository<T>:IDisposable
+    public interface IRepository<T> : IDisposable
         where T : class
     {
         IEnumerable<T> GetAll();
