@@ -1,10 +1,22 @@
-﻿using System.Web.Optimization;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="BundleConfig.cs" company="Tecwi">
+// Copyright (c) Tecwi. All rights reserved.
+// </copyright>
+// <author>Elena Gertsiy</author>
+//-------------------------------------------------------------------
 namespace TestApp
 {
+    using System.Web.Optimization;
+    
+    /// <summary>
+    /// Configuration of Bundles
+    /// </summary>
     public class BundleConfig
-    {
-        // Дополнительные сведения об объединении см. на странице https://go.microsoft.com/fwlink/?LinkId=301862
+    {      
+        /// <summary>
+        /// register bundles
+        /// </summary>
+        /// <param name="bundles">Register BundlesCollection</param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(

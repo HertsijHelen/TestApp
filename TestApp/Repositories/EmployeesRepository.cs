@@ -8,24 +8,43 @@ namespace TestApp.Repositories
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using TestApp.Entities;
-
-    public class EmployeesRepository: IRepository<Employee>
+    
+    /// <summary>
+    /// Initialize a new instance of EmployeesRepository
+    /// </summary>
+    public class EmployeesRepository : IRepository<Employee>
     {
+        /// <summary>
+        /// Initialize a new Instance of DataContext
+        /// </summary>
         private DataContext db = new DataContext();
-       
+
+        /// <summary>
+        /// The property of disposed DataContext
+        /// </summary>
+        private bool disposed = false;
+
+        /// <summary>
+        /// Get all records from Employees table
+        /// </summary>
+        /// <returns>record from employees table</returns>
         public IEnumerable<Employee> GetAll()
         {
-            return db.Employees;
+            return this.db.Employees;
         }
        
+       /// <summary>
+       /// Add a new record to Employees table
+       /// </summary>
+       /// <param name="item">the record wich need to added</param>
+       /// <returns>return item</returns>
         public Employee Create(Employee item)
         {
             try
             {
-                db.Employees.Add(item);
-                db.SaveChanges();
+                this.db.Employees.Add(item);
+                this.db.SaveChanges();
                 return item;
             }
             catch
@@ -33,16 +52,23 @@ namespace TestApp.Repositories
                 return null;
             }
         }
-        public bool Update(int id,Employee item)
+        
+        /// <summary>
+        /// Update a recod Employees table by id
+        /// </summary>
+        /// <param name="id">a record wich need to update</param>
+        /// <param name="item">record wich update</param>
+        /// <returns>return true or false</returns>
+        public bool Update(int id, Employee item)
         {
-            Employee e = db.Employees.Find(id);
+            Employee e = this.db.Employees.Find(id);
             try
             {
                 e.Name = item.Name;
                 e.Position = item.Position;
                 e.Age = item.Age;
                 e.StartDate = item.StartDate;
-                db.SaveChanges();
+                this.db.SaveChanges();
                 return true;
             }
             catch
@@ -50,13 +76,19 @@ namespace TestApp.Repositories
                 return false;
             }
          }
+        
+        /// <summary>
+        /// Remove a record from Employees table by id
+        /// </summary>
+        /// <param name="id">a record wich delete</param>
+        /// <returns>return true of false</returns>
          public bool Delete(int id)
          {
             Employee emp = db.Employees.Find(id);
             try
             {
-                db.Employees.Remove(emp);
-                db.SaveChanges();
+                this.db.Employees.Remove(emp);
+                this.db.SaveChanges();
                 return true;
             }
             catch
@@ -65,20 +97,25 @@ namespace TestApp.Repositories
             }
         }
       
-        private bool disposed = false;
-
+        /// <summary>
+        /// the method for dispose DataContext class
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
                 if (disposing)
                 {
-                    db.Dispose();
+                    this.db.Dispose();
                 }
             }
             this.disposed = true;
         }
 
+        /// <summary>
+        /// The method for 
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
