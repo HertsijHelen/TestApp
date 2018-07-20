@@ -98,7 +98,7 @@ namespace TestApp.Repositories
         }
       
         /// <summary>
-        /// the method for dispose DataContext class
+        /// The Dispose method
         /// </summary>
         /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
@@ -114,7 +114,7 @@ namespace TestApp.Repositories
         }
 
         /// <summary>
-        /// The method for 
+        /// The Dispose(true) method 
         /// </summary>
         public void Dispose()
         {
